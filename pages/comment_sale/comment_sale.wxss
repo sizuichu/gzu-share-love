@@ -1,0 +1,383 @@
+page{
+  background-color: #F5F5F5;
+}
+
+.sale-container{
+  width: 100%;
+  background: white;
+}
+
+.sale-item{
+  margin-top: 5rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sale-item .header{
+  width: 95%;
+  background: white;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.user-avatar image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  margin-top: 9rpx;
+}
+
+.user-name{
+  font-size: 3prx;
+  margin-left: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name .user-name-created{
+  font-size: 27rpx;
+  color: gray;
+}
+
+.content{
+  width: 100%;
+}
+
+.content .content-detail{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.content-detail .detail-item{
+  width: 100%;
+  padding: 5rpx;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+}
+
+.detail-item{
+  color: gray;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-item-user{
+  width: 100%;
+  text-align: center;
+  color: black;
+}
+
+.detail-item-gender{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.detail-item-gray{
+  background: #DCDCDC;
+  background:rgba(0,0,0,0.02);
+}
+
+.detail-item-gender .gender-image{
+  width: 12%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.detail-item-gender image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.detail-item-gender .gender-world{
+  width: 88%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10rpx;
+}
+
+.show-self{
+  display: flex;
+  flex-direction: row;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.image-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container image{
+  width: 100%;
+}
+
+.comment-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.comment-wall{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.comment-wall .comment-header{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 40rpx;
+  font-weight: 200;
+  color: darkgray;
+  height: 100rpx;
+}
+
+.comment-header .zan{
+  display: flex;
+  flex-direction: row;
+}
+.comment-header .comment{
+  display: flex;
+  flex-direction: row;
+}
+
+
+/**post css**/
+
+.post-container{
+  position:fixed;
+  right:18rpx;
+  top:5rpx;
+  z-index:100;
+  width: 80prx;
+  height: 80prx;
+}
+
+.post image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+
+.comment-input-container{
+  position:fixed;
+  bottom: 0rpx;
+  z-index:100;
+  width: 100%;
+  height: 200prx;
+  background: WhiteSmoke;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 10rpx;
+}
+
+.comment-input-container textarea{
+  width: 100%;
+  margin-left: 20rpx;
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #0aecc3;
+  margin-right: 20rpx;
+  padding-bottom: 15rpx;
+  font: 30rpx;
+  font-weight: 200;
+  margin-bottom: 20rpx;
+  padding-top: 17rpx;
+}
+
+.comment-input-container .send-button{
+  width: 130rpx;
+  height: 70rpx;
+  font-size: 30rpx;
+  background: #0aecc3;
+  color: white;
+  margin-right: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10rpx;
+}
+
+.show-self{
+  display: flex;
+  flex-direction: row;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.introduce{
+  color: white;
+  font-size: 30rpx;
+  padding: 10rpx;
+  border-radius: 10rpx;
+}
+
+/** 用户评论内容 **/
+.user-comment{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.user-comment .comment-item{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20rpx;
+  border-top-style:solid;
+  border-width:1rpx;
+  border-color: #E8E8E8;
+  padding-top: 20rpx;
+}
+
+.comment-item .left{
+  width: 15%;
+}
+
+.comment-item .right{
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 20rpx;
+}
+
+.comment-item .content{
+  font-size: 35rpx;
+}
+
+.user-image image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+
+.right .create_at{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: darkgray;
+  font-size: 25rpx;
+  margin-top: 5rpx;
+  align-items: center;
+}
+
+.comment-icon image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+
+.right .comment-name{
+  color: #0061b2;
+}
+
+.right .right-item{
+  margin-bottom: 10rpx;
+}
+
+.right .reply-comment{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  background: WhiteSmoke;
+  margin-top: 10rpx;
+  padding: 15rpx;
+}
+
+.reply-comment .reply-container{
+  display: inline;
+}
+
+.reply-comment .reply-item{
+  font-size: 35rpx;
+  font-weight: 200;
+  display: flex;
+  flex-direction: row;
+}
+
+.reply-item .reply-user{
+  color: #0061b2;
+}
+
+/** 新的评论css **/
+
+.comment-user-container{
+  font-size: 30rpx;
+  background: WhiteSmoke;
+  padding: 10rpx;
+}
+
+.qipao{
+  width: 0;
+  height: 0;
+  border-right: 20rpx solid white;
+  border-bottom: 20rpx solid WhiteSmoke;
+  border-left: 20rpx solid white;
+  margin-left: 20rpx;
+}
+
+.inline-item{
+  display: inline;
+}
+
+.comment-wall-item .comment-user-container{
+  display: inline;
+}
+
+.comment-user-container image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 5rpx;
+  border-radius:20rpx;
+}
+
+.comment-wall-item .comment-ref-user-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-ref-user-container image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 5rpx;
+  border-radius:20rpx;
+}
+
+.comment-user{
+  color: #0061b2;
+}
+
+.user-comment .content{
+
+}
