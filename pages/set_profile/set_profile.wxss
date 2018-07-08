@@ -107,7 +107,7 @@ page{
 }
 
 .code-button{
-  background: #66CDAA;
+  background: #ff7c7c;
   color: white;
   padding: 10rpx;
   border-radius: 10rpx;
@@ -134,7 +134,7 @@ page{
   padding: 10rpx 10rpx;
 }
 button{
-  background: #66CDAA;
+  background: #ff7c7c;
   color: white;
   width: 95%;
 }

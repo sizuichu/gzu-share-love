@@ -19,23 +19,53 @@
         </view>
         <view class="mission">
           <view class='description'>
-            {{job.content}}
+            <view>{{job.content}}</view>
           </view>
         </view>
         <view class='salary'>
           <view class='container'>
-            <view class='label'>酬劳：</view>
+            <view>赏金：</view>
             <view class='money'>{{job.salary}}元</view>
           </view>
         </view>
       </view>
       <view class='footer'>
-        <view class='order'>
-          <image src='/image/take-order.png'></image>
-          <view>接单</view>
+        <form class='order form'
+              wx:if="{{job.can_restart}}" 
+              bindsubmit='restart'
+              report-submit="true">
+            <view class='form-item'>
+              <button class='button' formType="submit" style='border: none;'>
+                <image src='/image/restart.png'></image>
+                <view >重新发布</view>
+              </button>
+            </view>
+        </form>
+        <form class='order form'
+              wx:if="{{job.can_comfirm}}" 
+              bindsubmit='confirmOrder'
+              report-submit="true">
+            <view class='form-item'>
+              <button class='button' formType="submit" style='border: none;'>
+                <image src='/image/confirm.png'></image>
+                <view >确认完成</view>
+              </button>
+            </view>
+        </form>
+        <view class='order' wx:if="{{job.can_show_tip}}">
+          <image src='/image/working.png'></image>
+          <view>{{job.show_employee_tip}}</view>
         </view>
-        <view class='contact'>
-          <image src='/image/contact.png'></image>
+        <view class='order' wx:if="{{job.can_comment}}" bindtap='comment'>
+          <image src='/image/help-comment.png'></image>
+          <view>评论</view>
+        </view>
+        <view class='order' wx:if="{{!job.can_comment && job.status == 4}}">
+          <image src='/image/help-comment.png'></image>
+          <view>已评论</view>
+        </view>
+        <view class='contact' wx:if="{{job.can_contact}}"  bindtap='letter' data-obj='{{job.user_id}}'>
+          <image src='/image/xw.png'></image>
           <view>联系</view>
         </view>
       </view>
@@ -69,7 +99,7 @@
         <view class='phone user-item'>
           <view>联系电话：</view>
           <view class='item-content'>{{roleProfile.phone}}</view>
-          <view class='call-phone' bindtap='callPhone' data-phone='13425144866'>拨号</view>
+          <view class='call-phone' bindtap='callPhone' data-phone='{{roleProfile.phone}}'>拨号</view>
         </view>
       </view>
     </view>
@@ -80,49 +110,100 @@
           <view class='title-label'>悬赏记录</view>
         </view>
         <view class='count-history'>
-          <view class='count-item'>
+          <view class='count-item' bindtap='selectMssionType' data-obj='1'>
             <view>好评</view>
-            <view>10</view>
+            <view>{{job.job_status.score.good}}</view>
           </view>
-          <view class='count-item'>
-            <view>好评</view>
-            <view>10</view>
+          <view class='count-item' bindtap='selectMssionType' data-obj='2'>
+            <view>中评</view>
+            <view>{{job.job_status.score.middle}}</view>
           </view>
-          <view class='count-item'>
-            <view>好评</view>
-            <view>10</view>
+          <view class='count-item' bindtap='selectMssionType' data-obj='3'>
+            <view>差评</view>
+            <view>{{job.job_status.score.bad}}</view>
           </view>
         </view>
       </view>
     </view>
 
-    <view class='content-item history-content'>
+    <view class='content-item history-content' wx:for="{{employeeJobs}}" wx:key="{{employeeJobs}}">
       <view class='header'>
         <view class='header-content'>
           <view class='avatar'>
-          <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRSkNHofic4wB9oyZrFBybUGjozW4DKtGJYWTWORATffxUtFLt1Cm3ibP0YVtfRicERVhsSickhgZic2w/132'></image>
+          <image src='{{item.job.user.avatar}}'></image>
         </view>
          <view class='nickname'>
-          <view class='name'>小海</view>
-          <view class='time'>2018-6-18 23:10:12</view>
+          <view class='name'>{{item.job.user.nickname}}</view>
+          <view class='time'>{{item.job.created_at}}</view>
+         </view>
+         <view class='score-icon' wx:if="{{item.score != 0}}">
+          <view class='seal-world' wx:if="{{item.score == 1}}">好评</view>
+          <view class='seal-world2' wx:if="{{item.score == 2}}">中评</view>
+          <view class='seal-world3' wx:if="{{item.score == 3}}">差评</view>
+          <image src='/image/seal.png' wx:if="{{item.score == 1}}"></image>
+          <image src='/image/middle.png' wx:if="{{item.score == 2}}"></image>
+          <image src='/image/bad.png' wx:if="{{item.score == 3}}"></image>
          </view>
         </view>
       </view>
       <view class='content'>
         <view class='title'>
-          <view class='label'>代课</view>
+          <view class='label'>{{item.job.title}}</view>
         </view>
         <view class="mission">
           <view class='description'>
-            后天我有事，但是又请不到假，所以想找个同学帮忙去代课，很简单的，只要老师点名的时候喊个到就行了，哈哈。
+            <view>{{item.job.content}}</view>
+          </view>
+          <view class='image-container'>
+            <view class="single-image" 
+                wx:if='{{item.job.attachments.length==1}}'>
+            <image mode="widthFix" 
+                   class="image-item" 
+                   wx:for="{{item.job.attachments}}" 
+                   wx:key="{{item.job.attachments}}"
+                   src="{{baseImageUrl+item}}"
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
+          </view>
+          <view class='more-image' 
+                wx:if='{{item.job.attachments.length>1}}'>
+            <image mode="aspectFill" 
+                   class="image-item" 
+                   wx:for="{{item.job.attachments}}" 
+                   wx:key="{{item.job.attachments}}"
+                   src="{{baseImageUrl+item}}" 
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
+          </view>
           </view>
         </view>
       </view>
       <view class='comment-footer'>
         <view class='comment-container'>
           <view class='comment-title'>评价:</view>
-          <view class='content'>任务完成的挺好的，希望下次再合作，哈哈</view>
-          <view class='attachments'></view>
+          <view class='content'>{{item.job.comment.content}}</view>
+          <view class='image-container'>
+            <view class="single-job-image" 
+                wx:if='{{item.job.comment.attachments.length==1}}'>
+            <image mode="aspectFill" 
+                   class="image-item" 
+                   wx:for="{{item.job.comment.attachments}}" 
+                   wx:key="{{item.job.comment.attachments}}"
+                   src="{{baseImageUrl+item}}"
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
+          </view>
+          <view class='more-image' 
+                wx:if='{{item.job.comment.attachments.length>1}}'>
+            <image mode="aspectFill" 
+                   class="image-item" 
+                   wx:for="{{item.job.comment.attachments}}" 
+                   wx:key="{{item.job.comment.attachments}}"
+                   src="{{baseImageUrl+item}}" 
+                   bindtap='previewImage'
+                   id="{{baseImageUrl+item}}"></image>
+          </view>
+          </view>
         </view>  
       
       </view>
@@ -130,3 +211,10 @@
 
   </view>
 </view>
+
+  <view class='get-more' wx:if="{{showGeMoreLoadin}}">
+    <view class='get-more-item'>
+      <image src='/image/get-more.gif' mode='aspectFit'></image>
+      <view class='loading'>加载中</view>
+    </view>
+  </view>

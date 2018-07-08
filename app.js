@@ -25,11 +25,11 @@ App({
     } else {
       console.log('token=' + token);
     }
-
   },
+
   /**
-     * 登录获取token
-     */
+  * 登录获取token
+  */
   login: function (_method = null, _url = null, _data = null, callback = null) {
     wx.login({
       success: res => {
@@ -81,7 +81,6 @@ App({
                   }
                 }
               })
-
             }
           })
         } else {
@@ -167,14 +166,14 @@ App({
   getNewInbox:function(type,callback){
 
     this.http('GET', `/new/${type}/inbox`, {}, function (res) {
-
-      console.log(res);
-
       callback(res);
-
     });
 
   },
+
+  /**
+   * 获取小程序配置
+   */
   getConfig:function(callback){
     wx.request({
       url: this.globalData.apiUrl + '/config?',
@@ -200,7 +199,17 @@ App({
         console.log(res);
       }
     })
+  },
 
+  /**
+   * 收集form id
+   */
+  collectFormId:function(formId){
+    this.http('POST', `/save_form_id`, {
+      form_id:formId
+    }, function (res) {
+      console.log(res);
+    });
   },
 
   globalData: {

@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": false,
 		"minified": true,
@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.9.2",
 	"appid": "wx03a85e8ad46f532b",
-	"projectname": "%E6%A0%A1%E5%9B%AD%E5%B0%8F%E6%83%85%E4%B9%A6",
+	"projectname": "%E8%B4%B5%E5%A4%A7%E5%B0%8F%E6%83%85%E4%B9%A6",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -203,6 +203,30 @@
 					"id": -1,
 					"name": "修改个人资料",
 					"pathName": "pages/set_profile/set_profile",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评论悬赏",
+					"pathName": "pages/comment_mission/comment_mission",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评论悬赏",
+					"pathName": "pages/help/help",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评论悬赏",
+					"pathName": "pages/comment_mission/comment_mission",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评论悬赏",
+					"pathName": "pages/comment_mission/comment_mission",
 					"query": ""
 				}
 			]

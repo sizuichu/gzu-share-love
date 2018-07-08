@@ -145,7 +145,22 @@ page{
   padding: 10rpx 10rpx;
 }
 button{
-  background: #ffafb8;
+  background: #ff7c7c;
   color: white;
   width: 95%;
+}
+
+.tips{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30rpx;
+  align-items: center;
+  padding-bottom: 10rpx;
+}
+
+.tips .warming{
+  color: darkgray;
+  width: 95%;
+  font-size: 30rpx;
 }

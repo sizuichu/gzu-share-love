@@ -1,7 +1,7 @@
 <view class='container'>
 
   <view class='header'>
-    <view class='tips'>试试你跟Ta有没有情侣相吧!</view>
+    <view class='tips'>试试你跟Ta有没有情侣相吧</view>
   </view>
 
   <view class='image-container' wx-if="{{showSelect}}">

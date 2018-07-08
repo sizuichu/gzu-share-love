@@ -36,7 +36,7 @@
 }
 
 .input-group input{
-  background: #ffafb8;
+  background: #EAEAEA;
   padding-top: 15rpx;
   padding-bottom: 15rpx;
   border-radius: 10rpx;
@@ -53,8 +53,7 @@
 
 .text textarea{
   width: 100%;
-  border:2rpx solid #ffafb8;
-  background:none ;
+  background: #EAEAEA;
   padding-top: 15rpx;
   padding-left: 15rpx;
   border-radius: 10rpx;
@@ -64,7 +63,7 @@
   width: 95%;
   display: flex;
   flex-direction: row;
-  background: #ffafb8;
+  background: #EAEAEA;
   margin-top: 30rpx;
   justify-content: space-between;
   text-align: center;
@@ -105,7 +104,7 @@
   padding: 10rpx 10rpx;
 }
 button{
-  background: #ffafb8;
+  background: #ff7c7c;
   color: white;
   width: 95%;
 }

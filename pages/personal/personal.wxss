@@ -158,8 +158,8 @@ page{
   padding-bottom: 20rpx;
   border-style:solid;
   border-width:1rpx;
-  border-color: #66CDAA;
-  color: #66CDAA;
+  border-color: #f6cbde;
+  color: #f6cbde;
   padding: 10rpx;
   border-radius: 10rpx;
 }

@@ -11,15 +11,6 @@ wx.onUserCaptureScreen(function (res) {
 
 Page({
   data: {
-    imgUrls: [
-      'http://gzu.weask.club/gzu-love/gzu-love1.jpg',
-      'http://gzu.weask.club/gzu-love/gzu-love2.jpg',
-      'http://gzu.weask.club/gzu-love/gzu-love3.jpg'
-    ],
-    indicatorDots: true,
-    autoplay: true,
-    interval: 3000,
-    duration: 1000,
     show_auth:app.globalData.show_auth,
     userInfo: {},
     hasUserInfo: false,
@@ -37,6 +28,7 @@ Page({
     commentObjId: '',
     commentType: '',
     refcommentId: '',
+    filter:'',
     pageSize: 10,
     pageNumber: 1,
     initPageNumber: 1,
@@ -53,13 +45,13 @@ Page({
     topic:'',
     showTopic:false,
 
-
     showSelect: false,
     showBegin: true,
     showCancel: false,
     showReport: false,
     bindReport: false,
     showSubmit: false,
+    showSearch:false,
     tryAgant: false,
     imageLeft: '',
     imageRight: '',
@@ -241,7 +233,8 @@ Page({
 
     if (objType == 1 && thisTopic != null){
       this.setData({
-        showTopic: true
+        showTopic: true,
+        posts: []
       });
     }else{
       this.setData({
@@ -249,9 +242,41 @@ Page({
       });
     }
 
+    if (objType == 5) {
+      this.setData({
+        showSearch: true,
+        showTopic: false,
+      });
+    } else {
+      this.setData({
+        showSearch: false
+      });
+    }
+
     this.setData({
       select: objType,
       postType: objType,
+      posts: [],
+      filter:''
+    })
+
+    this.setData({
+      pageNumber: this.data.initPageNumber
+    });
+
+    let _this = this;
+
+    if (objType != 5) {
+      _this.getPost(this);
+    }
+
+  },
+  /**
+   * 搜索
+   */
+  search:function(){
+    this.setData({
+      postType: 1,
       posts: []
     })
 
@@ -261,8 +286,11 @@ Page({
 
     let _this = this;
 
-    _this.getPost(this);
+    wx.showLoading({
+      title: '搜索中...',
+    });
 
+    _this.getPost(this);
   },
   /**
    * 进入新消息列表
@@ -466,7 +494,7 @@ Page({
     });
 
     app.http('get',
-      `/post?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&obj_type=${objType}&type=${_this.data.postType}&order_by=${order_by}&sort_by=${sort_by}`,
+      `/post?page_size=${_this.data.pageSize}&page_number=${_this.data.pageNumber}&obj_type=${objType}&type=${_this.data.postType}&order_by=${order_by}&sort_by=${sort_by}&filter=${_this.data.filter}`,
       {},
       res => {
 
@@ -664,7 +692,15 @@ Page({
       commentContent: content
     })
   },
-
+  /**
+   * 获取搜索框的内容
+   */
+  getFilter: function (event){
+    let content = event.detail.value;
+    this.setData({
+      filter: content
+    })
+  },
   /**
    * 提交评论
    */

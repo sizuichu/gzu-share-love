@@ -26,17 +26,19 @@
     "pages/help/help",
     "pages/post_help/post_help",
     "pages/help_detail/help_detail",
-    "pages/set_profile/set_profile"
+    "pages/set_profile/set_profile",
+    "pages/comment_mission/comment_mission",
+    "pages/help_single/help_single"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#ffafb8",
+    "navigationBarBackgroundColor": "#ff7c7c",
     "navigationBarTitleText": "贵大小情书",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#515151",
-    "selectedColor": "#b10000",
+    "selectedColor": "",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
@@ -59,10 +61,10 @@
         "text": "情侣脸"
       },
       {
-        "pagePath": "pages/match/match",
-        "iconPath": "image/pipei.png",
-        "selectedIconPath": "image/select-pipei.png",
-        "text": "暗恋匹配"
+        "pagePath": "pages/help/help",
+        "iconPath": "image/help.png",
+        "selectedIconPath": "image/select-help.png",
+        "text": "悬赏令"
       },
       {
         "pagePath": "pages/personal/personal",
